@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<button onclick="GetGeolocation()">location</button>
+
+<h1 id="latitude"></h1>
+<h1 id="longitude"></h1>
+
+<iframe id="map" src=""  width="550" height="400" frameborder="0" style="border:0"></iframe>
+
+<script>
+
+    function GetGeolocation(){
+        navigator.geolocation.getCurrentPosition(function (site) {
+            let latitude=site.coords.latitude;
+            document.getElementById('latitude').innerHTML="latitude:"+latitude;
+            let longitude=site.coords.longitude;
+            document.getElementById('longitude').innerHTML="longitude:"+longitude;
+
+            let MapURL="https://maps.google.com/maps?q="+latitude+","+longitude+"&z=6&output=embed"
+            document.getElementById('map').src=MapURL;
+        });
+    }
+
+
+</script>
+
+</body>
+</html>
